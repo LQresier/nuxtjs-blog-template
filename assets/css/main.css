@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #53ed85;
+  --color-secondary: #9ef9fd;
+  --color-tertiary: #d8e202;
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+
+  --color-primary-dark: #53ed85;
+  --color-secondary-dark: #9ef9fd;
+  --color-tertiary-dark: #d8e202;
+  --color-background-dark: #202124;
+  --color-foreground-dark: #e8eaed;
+}
+
+@layer base {
+  body {
+    @apply text-foreground dark:text-foreground-dark bg-background dark:bg-background-dark;
+  }
+}
+
+@utility prose {
+  pre code span.line {
+    @apply w-full block;
+    
+    &.highlight {
+      @apply bg-yellow-300/50! dark:bg-yellow-400/30! rounded-sm;
+    }
+  }
+
+  blockquote p {
+    &:first-of-type {
+      &::before {
+        @apply content-none;
+      }
+    }
+  }
+
+  img {
+    @apply rounded-sm;
+  }
+}
